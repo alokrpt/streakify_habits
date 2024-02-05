@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import CreateHabitForm from './components/CreateHabitForm';
-import { HabitModel } from './models/models';
+import { HabitModel, habitModelToString } from './models/models';
 import HabitList from './components/HabitList';
 import { v4 as uuid } from 'uuid';
+import { LocalGetData, LocalSaveData } from './helpers/local_storage_helper';
 
 const App: React.FC = () => {
   const [habit, add] = useState<HabitModel>({ id: uuid(), name: '', frequency: 7, streak: 0 })
-  const [habits, updateHabits] = useState<HabitModel[]>([])
+  const [habits, updateHabits] = useState<HabitModel[]>(
+    () => {
+      const savedData = LocalGetData();
+      return savedData || [];
+    }
+  )
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
     if (habit.name) {
@@ -16,6 +22,12 @@ const App: React.FC = () => {
       console.log(habits);
     }
   };
+
+  useEffect(() => {
+    updateHabits(LocalGetData());
+  }, []);
+  
+  LocalSaveData({ habits: habits, updateHabits: updateHabits });
   return <div className='App'>
     <center>
       <h2 className="heading">
