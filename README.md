@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# streakify_habits
+
+A Habit tracking app with features of streaks, local storage and unit tests of essencial components.
+
+## Getting Started
+
+This the is hosted at [Streakify Habits] (<https://alokrpt.github.io/streakify_habits>).
+
+<img src="assets/screenshot.png" width="150"/>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
