@@ -4,13 +4,13 @@ import CreateHabitForm from './components/CreateHabitForm';
 import { HabitModel, habitModelToString } from './models/models';
 import HabitList from './components/HabitList';
 import { v4 as uuid } from 'uuid';
-import { LocalGetData, LocalSaveData } from './helpers/local_storage_helper';
+import { localGetData, localSaveData } from './helpers/local_storage_helper';
 
 const App: React.FC = () => {
   const [habit, add] = useState<HabitModel>({ id: uuid(), name: '', frequency: 7, streak: 0 })
   const [habits, updateHabits] = useState<HabitModel[]>(
     () => {
-      const savedData = LocalGetData();
+      const savedData = localGetData();
       return savedData || [];
     }
   )
@@ -24,10 +24,11 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    updateHabits(LocalGetData());
+    updateHabits(localGetData());
   }, []);
-  
-  LocalSaveData({ habits: habits, updateHabits: updateHabits });
+  useEffect(() => {
+    localSaveData({ habits: habits });
+  }, [habits]);
   return <div className='App'>
     <center>
       <h2 className="heading">

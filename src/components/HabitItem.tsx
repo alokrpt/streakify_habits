@@ -15,7 +15,7 @@ interface Props {
 const HabitItem: React.FC<Props> = ({ habit, habitList, updateHabits }: Props) => {
     // Done
     const markDone = (id: string) => {
-        let temp = habitList.map((habit) => habit.id === id ? { ...habit, streak: ++habit.streak, lastDone: Date.now() } : habit);
+        let temp = habitList.map((habit) => habit.id === id ? { ...habit, streak: DateHelper.isEpochDateYesterday() ? ++habit.streak : 0, lastDone: Date.now() } : habit);
         updateHabits(temp);
     }
     // Delete

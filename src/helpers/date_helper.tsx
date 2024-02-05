@@ -1,7 +1,5 @@
 export class DateHelper {
     static isEpochDateToday(epochDate?: number): boolean {
-        console.log(epochDate);
-
         if (!epochDate) return false;
         // Convert epoch date to milliseconds
         const date = new Date(epochDate);
@@ -13,5 +11,17 @@ export class DateHelper {
         return date.getFullYear() === today.getFullYear() &&
             date.getMonth() === today.getMonth() &&
             date.getDate() === today.getDate();
+    }
+    static isEpochDateYesterday(epochDate?: number): boolean {
+        if (!epochDate) return true;
+        const date = new Date(epochDate);
+        const today = new Date();
+        console.log(date.getFullYear() === today.getFullYear() &&
+            date.getMonth() === today.getMonth() &&
+            date.getDate() === today.getDate() - 1);
+
+        return date.getFullYear() === today.getFullYear() &&
+            date.getMonth() === today.getMonth() &&
+            date.getDate() === today.getDate() - 1;
     }
 }
