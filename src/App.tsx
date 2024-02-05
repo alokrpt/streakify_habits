@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import InputFeild from './components/InputFeild';
+import CreateHabitForm from './components/CreateHabitForm';
+import { HabitModel } from './models/models';
+import HabitList from './components/HabitList';
+import { v4 as uuid } from 'uuid';
 
 const App: React.FC = () => {
-  const [habitName, add] = useState<string>('')
-  console.log(habitName)
+  const [habit, add] = useState<HabitModel>({ id: uuid(), name: '', frequency: 7, streak: 0 })
+  const [habits, updateHabits] = useState<HabitModel[]>([])
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (habit.name) {
+      updateHabits([...habits, { id: uuid(), name: habit.name, frequency: habit.frequency, streak: 0 }]);
+      add({ ...habit, name: '' })
+      console.log(habits);
+    }
+  };
   return <div className='App'>
     <center>
       <h2 className="heading">
-        Streakify
+        Streakify Habits
       </h2>
-      <InputFeild habitName={habitName} add={add}></InputFeild>
+      <CreateHabitForm habit={habit} add={add} handleAdd={handleAdd}></CreateHabitForm>
+      <HabitList habits={habits} updateHabits={updateHabits}></HabitList>
     </center>
   </div>;
 }
