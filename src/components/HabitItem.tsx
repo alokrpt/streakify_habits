@@ -4,6 +4,7 @@ import { MdDone, MdOutlineDoneAll } from "react-icons/md";
 import './styles.css'
 import { useState } from "react";
 import { DateHelper } from "../helpers/date_helper";
+import { toast } from "react-toastify";
 
 
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const HabitItem: React.FC<Props> = ({ habit, habitList, updateHabits }: Props) => {
+    toast('dfvvdfvde')
     // Done
     const markDone = (id: string) => {
         let temp = habitList.map((habit) => habit.id === id ? { ...habit, streak: DateHelper.isEpochDateYesterday() ? ++habit.streak : 0, lastDone: Date.now() } : habit);
@@ -57,7 +59,8 @@ const HabitItem: React.FC<Props> = ({ habit, habitList, updateHabits }: Props) =
             : <div>
                 <AiTwotoneEdit className="icon" onClick={() => setEditedHabit(habit)} />
                 <AiTwotoneDelete className="icon" onClick={() => markDelete(habit.id)} />
-                {DateHelper.isEpochDateToday(habit.lastDone) ? <MdOutlineDoneAll className="icon" /> : <MdDone className="icon" onClick={() => markDone(habit.id)} />}
+                {DateHelper.isEpochDateToday(habit.lastDone) ? <MdOutlineDoneAll className="icon" onClick={() =>
+                    toast('Already done for today')} /> : <MdDone className="icon" onClick={() => markDone(habit.id)} />}
             </div>}
 
     </form>;

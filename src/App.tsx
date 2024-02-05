@@ -5,6 +5,8 @@ import { HabitModel, habitModelToString } from './models/models';
 import HabitList from './components/HabitList';
 import { v4 as uuid } from 'uuid';
 import { localGetData, localSaveData } from './helpers/local_storage_helper';
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify';
 
 const App: React.FC = () => {
   const [habit, add] = useState<HabitModel>({ id: uuid(), name: '', frequency: 7, streak: 0 })
@@ -22,7 +24,6 @@ const App: React.FC = () => {
       console.log(habits);
     }
   };
-
   useEffect(() => {
     updateHabits(localGetData());
   }, []);
@@ -34,6 +35,7 @@ const App: React.FC = () => {
       <h2 className="heading">
         Streakify Habits
       </h2>
+      <ToastContainer />
       <CreateHabitForm habit={habit} add={add} handleAdd={handleAdd}></CreateHabitForm>
       <HabitList habits={habits} updateHabits={updateHabits}></HabitList>
     </center>
