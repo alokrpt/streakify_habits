@@ -26,7 +26,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint:fix": "npm run prettier && eslint '*/**/*.ts' --quiet --fix",
+    "lint": "eslint '*/**/*.ts' --quiet"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +50,7 @@
   },
   "devDependencies": {
     "@types/uuid": "^9.0.8",
+    "eslint": "^8.56.0",
     "gh-pages": "^6.1.1"
   }
 }
