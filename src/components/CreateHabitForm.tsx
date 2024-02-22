@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import './styles.css'
-import { HabitModel } from '../models/models';
+import { HabitModel } from '../models/Models';
 
 interface Props {
     habit: HabitModel;

@@ -1,9 +1,9 @@
-import { HabitModel } from "../models/models";
+import { HabitModel } from "../models/Models";
 import { AiTwotoneEdit, AiTwotoneDelete } from "react-icons/ai";
 import { MdDone, MdOutlineDoneAll } from "react-icons/md";
 import './styles.css'
 import { useState } from "react";
-import { DateHelper } from "../helpers/date_helper";
+import { DateHelper } from "../helpers/DateHelper";
 import { toast } from "react-toastify";
 
 

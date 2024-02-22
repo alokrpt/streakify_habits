@@ -1,4 +1,4 @@
-import { HabitModel } from "../models/models";
+import { HabitModel } from "../models/Models";
 
 
 const demoData: HabitModel[] = [

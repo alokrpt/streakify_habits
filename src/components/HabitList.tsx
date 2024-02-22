@@ -1,5 +1,5 @@
 import { SetStateAction } from "react";
-import { HabitModel } from "../models/models";
+import { HabitModel } from "../models/Models";
 import HabitItem from "./HabitItem";
 import './styles.css'
 

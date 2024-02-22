@@ -2,10 +2,10 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 import HabitList from './components/HabitList';
-import demoData from './test_helpers/demo_data';
+import demoData from './test_helpers/DemoData';
 import CreateHabitForm from './components/CreateHabitForm';
-import { DateHelper } from './helpers/date_helper';
-import { HabitModel, habitModelToString, stringToHabitModel } from './models/models';
+import { DateHelper } from './helpers/DateHelper';
+import { HabitModel, habitModelToString, stringToHabitModel } from './models/Models';
 
 test('renders home page of the app', () => {
   render(<App />);

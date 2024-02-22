@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import CreateHabitForm from './components/CreateHabitForm';
-import { HabitModel, habitModelToString } from './models/models';
+import { HabitModel, habitModelToString } from './models/Models';
 import HabitList from './components/HabitList';
 import { v4 as uuid } from 'uuid';
-import { localGetData, localSaveData } from './helpers/local_storage_helper';
+import { localGetData, localSaveData } from './helpers/LocalStorageHelper';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from 'react-toastify';
 

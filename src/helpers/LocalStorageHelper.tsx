@@ -1,4 +1,4 @@
-import { HabitModel, habitModelToString, stringToHabitModel } from "../models/models";
+import { HabitModel, habitModelToString, stringToHabitModel } from "../models/Models";
 
 
 interface Props {
